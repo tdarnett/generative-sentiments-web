@@ -1,7 +1,8 @@
 <template>
-  <div>
+  <form>
     <input :placeholder="msg" v-model="sentiment" />
-  </div>
+    <input type="submit" />
+  </form>
 </template>
 
 <script>
