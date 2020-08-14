@@ -1,15 +1,16 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png" />
-    <SentimentInput msg="Describe how you feel in one sentence..." />
+    <el-main>
+      <SentimentInput msg="Describe how you feel in one sentence..." />
+    </el-main>
   </div>
 </template>
 
 <script>
-import SentimentInput from "./components/SentimentInput.vue";
+import SentimentInput from './components/SentimentInput.vue';
 
 export default {
-  name: "App",
+  name: 'app',
   components: {
     SentimentInput,
   },
@@ -18,7 +19,7 @@ export default {
 
 <style>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;

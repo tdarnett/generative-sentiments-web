@@ -1,38 +1,45 @@
 <template>
-  <form>
-    <input :placeholder="msg" v-model="sentiment" />
-    <input type="submit" />
-  </form>
+  <el-form ref="form" :model="form" @submit.native.prevent="handleSubmit">
+    <el-form-item>
+      <el-input
+        class="sentiment-input"
+        :placeholder="msg"
+        v-model="form.sentiment"
+        type="text"
+        :show-word-limit="true"
+        maxlength="50"
+      />
+    </el-form-item>
+  </el-form>
 </template>
 
 <script>
 export default {
-  name: "SentimentInput",
+  name: 'SentimentInput',
   props: {
     msg: String,
   },
-  data: function () {
+  data() {
     return {
-      sentiment: "",
+      form: {
+        sentiment: '',
+      },
     };
+  },
+  methods: {
+    handleSubmit() {
+      console.log('submit!');
+      // TODO send API request to predictor
+    },
   },
 };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h3 {
-  margin: 40px 0 0;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
+.sentiment-input {
+  width: 80%;
+  max-width: 700px;
+  font-size: 18pt;
 }
 </style>
