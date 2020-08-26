@@ -1,5 +1,5 @@
 <template>
-  <el-form ref="form" :model="form" @submit.native.prevent="handleSubmit">
+  <el-form ref="form" :model="form" @submit.native.prevent="getPredictionData">
     <el-form-item>
       <el-input
         class="sentiment-input"
@@ -8,12 +8,15 @@
         type="text"
         :show-word-limit="true"
         maxlength="50"
+        name="sentiment"
       />
     </el-form-item>
   </el-form>
 </template>
 
 <script>
+import PredictionService from '@/services/PredictionService.js';
+
 export default {
   name: 'SentimentInput',
   props: {
@@ -27,9 +30,13 @@ export default {
     };
   },
   methods: {
-    handleSubmit() {
-      console.log('submit!');
-      // TODO send API request to predictor
+    async getPredictionData(event) {
+      let sentence = event.target.elements.sentiment.value; // grab sentence from input
+      if (sentence) {
+        console.log(sentence); // TODO removce
+        let data = await PredictionService.getPrediction(sentence);
+        console.log(data); // TODO remove
+      }
     },
   },
 };
