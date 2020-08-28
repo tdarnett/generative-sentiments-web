@@ -2,7 +2,10 @@
   <div id="app">
     <el-main>
       <SentimentInput msg="Describe how you feel in one sentence..." />
-      <GenerativeCanvas />
+      <p>{{ this.$store.state.response }}</p>
+      <div v-if="this.$store.getters.label">
+        <GenerativeCanvas />
+      </div>
     </el-main>
   </div>
 </template>
