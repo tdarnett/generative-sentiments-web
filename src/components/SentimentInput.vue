@@ -34,7 +34,10 @@ export default {
       let sentence = event.target.elements.sentiment.value; // grab sentence from input
       if (sentence) {
         console.log(sentence); // TODO removce
+        this.$store.commit('toggleLoading');
         let data = await PredictionService.getPrediction(sentence);
+        this.$store.commit('toggleLoading');
+        this.$store.commit('updateResponse', data);
         console.log(data); // TODO remove
       }
     },
