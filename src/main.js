@@ -8,11 +8,9 @@ Vue.use(Vuex);
 
 const store = new Vuex.Store({
   state: {
-    isLoading: false,
     response: {},
   },
   mutations: {
-    toggleLoading: (state) => (state.isLoading = !state.isLoading),
     updateResponse: (state, response) => (state.response = response),
   },
   getters: {

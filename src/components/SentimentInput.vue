@@ -15,17 +15,18 @@
 </template>
 
 <script>
-import PredictionService from '@/services/PredictionService.js';
+import PredictionService from "@/services/PredictionService.js";
+import { Loading } from "element-ui";
 
 export default {
-  name: 'SentimentInput',
+  name: "SentimentInput",
   props: {
     msg: String,
   },
   data() {
     return {
       form: {
-        sentiment: '',
+        sentiment: "",
       },
     };
   },
@@ -34,10 +35,14 @@ export default {
       let sentence = event.target.elements.sentiment.value; // grab sentence from input
       if (sentence) {
         console.log(sentence); // TODO removce
-        this.$store.commit('toggleLoading');
+        // initialize loader singleton
+        let loader = Loading.service({
+          background: true,
+        });
         let data = await PredictionService.getPrediction(sentence);
-        this.$store.commit('toggleLoading');
-        this.$store.commit('updateResponse', data);
+        loader.close(); // close the loader
+
+        this.$store.commit("updateResponse", data);
         console.log(data); // TODO remove
       }
     },
