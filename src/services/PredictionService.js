@@ -9,7 +9,7 @@ export default {
     //   sentence,
     // };
     // let res = await axios.post(PREDICTION_URL, body);
-    let res = { data: { confidence: '0.999', label: 'sad', sentence } }; // TODO remove after testing
+    let res = { data: { confidence: '0.999', label: 'anger', sentence } }; // TODO remove after testing
     await new Promise((r) => setTimeout(r, 1000));
 
     return res.data;

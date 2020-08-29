@@ -1,19 +1,3 @@
-<template>
-  <el-form ref="form" :model="form" @submit.native.prevent="getPredictionData">
-    <el-form-item>
-      <el-input
-        class="sentiment-input"
-        :placeholder="msg"
-        v-model="form.sentiment"
-        type="text"
-        :show-word-limit="true"
-        maxlength="50"
-        name="sentiment"
-      />
-    </el-form-item>
-  </el-form>
-</template>
-
 <script>
 import PredictionService from "@/services/PredictionService.js";
 import { Loading } from "element-ui";
@@ -58,3 +42,19 @@ export default {
   font-size: 18pt;
 }
 </style>
+
+<template>
+  <el-form ref="form" :model="form" @submit.native.prevent="getPredictionData">
+    <el-form-item>
+      <el-input
+        class="sentiment-input"
+        :placeholder="msg"
+        v-model="form.sentiment"
+        type="text"
+        :show-word-limit="true"
+        maxlength="50"
+        name="sentiment"
+      />
+    </el-form-item>
+  </el-form>
+</template>
