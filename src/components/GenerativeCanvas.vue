@@ -14,11 +14,6 @@ export default {
       t: 0,
     };
   },
-  // props: {
-  //   confidence: String,
-  //   label: String,
-  //   sentence: String,
-  // },
   methods: {
     setup(sketch) {
       sketch.resizeCanvas(this.width, this.height);
