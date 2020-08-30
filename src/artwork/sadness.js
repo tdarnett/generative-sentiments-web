@@ -1,5 +1,4 @@
 export default {
-  // eslint-disable-next-line no-unused-vars
   generate(sketch, _) {
     sketch.translate(sketch.width / 4, 5);
     sketch.stroke(0, 0, 0, 15);
