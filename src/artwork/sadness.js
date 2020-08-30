@@ -9,9 +9,9 @@ let x = [];
 let y = [];
 
 export default {
-  setup(sk, height, width) {
-    centerX = width / 2;
-    centerY = height / 2;
+  setup(sk) {
+    centerX = sk.width / 2;
+    centerY = sk.height / 2;
     let angle = sk.radians(360 / formResolution);
     for (let i = 0; i < formResolution; i++) {
       x.push(sk.cos(angle * i) * initRadius);
@@ -23,7 +23,7 @@ export default {
     sk.background(31, 108, 173);
     return sk;
   },
-  draw(sk, _timestep, _response) {
+  draw(sk, _response) {
     // floating towards mouse position
     centerX += (sk.mouseX - centerX) * 0.01;
     centerY += (sk.mouseY - centerY) * 0.01;

@@ -1,9 +1,9 @@
 export default {
-  setup(sk, _height, _width) {
+  setup(sk) {
     sk.background(227, 49, 85);
     return sk;
   },
-  draw(sketch, _timestep, _response) {
+  draw(sketch, _response) {
     sketch.translate(sketch.width / 4, sketch.height / 6);
     sketch.stroke(0, 0, 0, 15);
     randomChord(sketch);

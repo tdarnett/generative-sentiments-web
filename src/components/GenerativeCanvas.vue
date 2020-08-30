@@ -8,18 +8,11 @@ export default {
   components: {
     "vue-p5": VueP5,
   },
-  data() {
-    return {
-      width: 800,
-      height: 600,
-      timestep: 0,
-    };
-  },
   // make sure every method created here exists in each emotion object in LABEL_ARTWORK_WRITER_MAP
   methods: {
     setup(sketch) {
       // defaults for all artwork
-      sketch.resizeCanvas(this.width, this.height);
+      sketch.createCanvas(sketch.windowWidth * 0.7, sketch.windowHeight * 0.8);
       sketch.background("white");
 
       // emotion specific setup
@@ -31,8 +24,7 @@ export default {
     draw(sketch) {
       if (this.$store.getters.label) {
         let labelArtwork = LABEL_ARTWORK_WRITER_MAP[this.$store.getters.label];
-        labelArtwork.draw(sketch, this.timestep, this.$store.state.response);
-        // this.timestep += 0.15;
+        labelArtwork.draw(sketch, this.$store.state.response);
       }
     },
     keypressed(sketch) {

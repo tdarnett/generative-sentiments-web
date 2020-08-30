@@ -11,8 +11,7 @@ const angleDistortion = 0.01;
 let counter = 0;
 
 export default {
-  setup(sk, _height, _width) {
-    sk.createCanvas(sk.displayWidth, sk.displayHeight);
+  setup(sk) {
     sk.background(250, 219, 77);
     sk.cursor(sk.CROSS);
 
@@ -25,7 +24,7 @@ export default {
 
     return sk;
   },
-  draw(sk, _timestep, response) {
+  draw(sk, response) {
     if (sk.mouseIsPressed && sk.mouseButton == sk.LEFT) {
       let letters = response.sentence;
 
