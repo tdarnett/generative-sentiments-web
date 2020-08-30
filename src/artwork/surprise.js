@@ -1,4 +1,5 @@
 // adapted from https://editor.p5js.org/mtchl/sketches/S1Lfx04il
+import { LABEL_ARTWORK_WRITER_MAP } from './constants.js';
 
 let points = [];
 const gravity = 0;
@@ -7,7 +8,8 @@ const surpriseCoefficient = 1.05;
 
 export default {
   setup(sk) {
-    sk.background(63, 165, 192);
+    let bg = LABEL_ARTWORK_WRITER_MAP['surprise'].background;
+    sk.background(bg.r, bg.g, bg.b);
     return sk;
   },
   draw(sk, response) {

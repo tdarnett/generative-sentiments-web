@@ -1,14 +1,19 @@
 // Adapted from https://p5js.org/examples/interaction-wavemaker.html
+import { LABEL_ARTWORK_WRITER_MAP } from './constants.js';
 
 let timestep = 0;
 
 export default {
   setup(sk) {
     sk.noStroke();
+    let bg = LABEL_ARTWORK_WRITER_MAP['fear'].background;
     sk.fill(53, 164, 80);
+    sk.background(bg.r, bg.g, bg.b);
     return sk;
   },
   draw(sk, _response) {
+    // let bg = LABEL_ARTWORK_WRITER_MAP['fear'].background;
+    // sk.background(bg.r, bg.g);
     sk.background(10, 10);
 
     // make a x and y grid of ellipses

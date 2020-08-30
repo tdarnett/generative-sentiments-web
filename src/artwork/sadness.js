@@ -1,4 +1,5 @@
 // Adapted from https://github.com/generative-design/Code-Package-p5.js/blob/master/01_P/P_2_2_3_01/sketch.js
+import { LABEL_ARTWORK_WRITER_MAP } from './constants.js';
 
 let formResolution = 15;
 let stepSize = 2;
@@ -20,7 +21,10 @@ export default {
 
     sk.stroke(0, 50);
     sk.strokeWeight(0.75);
-    sk.background(31, 108, 173);
+
+    let bg = LABEL_ARTWORK_WRITER_MAP['sadness'].background;
+    sk.background(bg.r, bg.g, bg.b);
+
     return sk;
   },
   draw(sk, _response) {

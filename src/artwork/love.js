@@ -1,11 +1,13 @@
-// Symmetry corresponding to the number of reflections. Change the number for different number of reflections
+import { LABEL_ARTWORK_WRITER_MAP } from './constants.js';
+
 let symmetry = 6;
 let angle = 360 / symmetry;
 let brushSize = 4;
 
 export default {
   setup(sk) {
-    sk.background(236, 104, 215);
+    let bg = LABEL_ARTWORK_WRITER_MAP['love'].background;
+    sk.background(bg.r, bg.g, bg.b);
     sk.angleMode(sk.DEGREES);
     return sk;
   },

@@ -25,9 +25,9 @@ export const LABEL_ARTWORK_WRITER_MAP = {
   fear: {
     object: fear,
     background: {
-      r: 53,
-      g: 164,
-      b: 80,
+      r: 0,
+      g: 0,
+      b: 0,
     },
   },
   love: {

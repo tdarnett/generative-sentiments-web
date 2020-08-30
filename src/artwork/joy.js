@@ -1,5 +1,5 @@
 // Adapted from https://github.com/generative-design/Code-Package-p5.js/blob/master/01_P/P_2_3_3_01/sketch.js
-
+import { LABEL_ARTWORK_WRITER_MAP } from './constants.js';
 let x;
 let y;
 let stepSize = 5.0;
@@ -12,7 +12,8 @@ let counter = 0;
 
 export default {
   setup(sk) {
-    sk.background(250, 219, 77);
+    let bg = LABEL_ARTWORK_WRITER_MAP['joy'].background;
+    sk.background(bg.r, bg.g, bg.b);
     sk.cursor(sk.CROSS);
 
     x = sk.mouseX;
