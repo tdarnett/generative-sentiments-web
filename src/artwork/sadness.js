@@ -23,7 +23,7 @@ export default {
     sk.background(31, 108, 173);
     return sk;
   },
-  draw(sk, _) {
+  draw(sk, _timestep, _response) {
     // floating towards mouse position
     centerX += (sk.mouseX - centerX) * 0.01;
     centerY += (sk.mouseY - centerY) * 0.01;
@@ -53,6 +53,16 @@ export default {
     sk.curveVertex(x[1] + centerX, y[1] + centerY);
     sk.endShape();
 
+    return sk;
+  },
+  mousepressed(sk) {
+    centerX = sk.mouseX;
+    centerY = sk.mouseY;
+    let angle = sk.radians(360 / formResolution);
+    for (let i = 0; i < formResolution; i++) {
+      x[i] = sk.cos(angle * i) * initRadius;
+      y[i] = sk.sin(angle * i) * initRadius;
+    }
     return sk;
   },
 };

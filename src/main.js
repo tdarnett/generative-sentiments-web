@@ -17,6 +17,9 @@ const store = new Vuex.Store({
     label: (state) => {
       return state.response && state.response.label;
     },
+    sentence: (state) => {
+      return state.response && state.response.sentence;
+    },
   },
 });
 

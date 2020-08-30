@@ -15,6 +15,7 @@ export default {
       timestep: 0,
     };
   },
+  // make sure every method created here exists in each emotion object in LABEL_ARTWORK_WRITER_MAP
   methods: {
     setup(sketch) {
       // defaults for all artwork
@@ -28,10 +29,9 @@ export default {
       }
     },
     draw(sketch) {
-      console.log("in outside draw function!");
       if (this.$store.getters.label) {
         let labelArtwork = LABEL_ARTWORK_WRITER_MAP[this.$store.getters.label];
-        labelArtwork.draw(sketch, this.timestep);
+        labelArtwork.draw(sketch, this.timestep, this.$store.state.response);
         // this.timestep += 0.15;
       }
     },
@@ -46,7 +46,13 @@ export default {
 
       // clear background
       if (keyCode == sketch.DELETE || keyCode == sketch.BACKSPACE) {
-        sketch.background(255);
+        sketch.background(255); // TODO use the label background constant
+      }
+    },
+    mousepressed(sketch) {
+      if (this.$store.getters.label) {
+        let labelArtwork = LABEL_ARTWORK_WRITER_MAP[this.$store.getters.label];
+        labelArtwork.mousepressed(sketch);
       }
     },
   },
@@ -54,5 +60,5 @@ export default {
 </script>
 
 <template>
-  <vue-p5 v-on="{ setup, draw, keypressed }"></vue-p5>
+  <vue-p5 v-on="{ setup, mousepressed, keypressed, draw}"></vue-p5>
 </template>

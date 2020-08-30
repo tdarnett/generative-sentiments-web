@@ -3,12 +3,15 @@ export default {
     sk.background(227, 49, 85);
     return sk;
   },
-  draw(sketch, _) {
+  draw(sketch, _timestep, _response) {
     sketch.translate(sketch.width / 4, sketch.height / 6);
     sketch.stroke(0, 0, 0, 15);
     randomChord(sketch);
     randomChord(sketch);
     return sketch;
+  },
+  mousepressed(sk) {
+    return sk;
   },
 };
 
