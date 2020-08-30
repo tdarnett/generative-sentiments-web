@@ -1,29 +1,47 @@
 <template>
   <div id="app">
-    <el-main>
-      <SentimentInput msg="Describe how you feel in one sentence..." />
-    </el-main>
+    <div class="wrapper" :style="backgroundColour">
+      <el-main>
+        <SentimentInput msg="Describe how you feel in one sentence..." />
+        <p>{{ this.$store.state.response }}</p>
+        <div v-if="this.$store.getters.label">
+          <GenerativeCanvas />
+        </div>
+      </el-main>
+    </div>
   </div>
 </template>
 
 <script>
-import SentimentInput from './components/SentimentInput.vue';
+import SentimentInput from "./components/SentimentInput.vue";
+import GenerativeCanvas from "./components/GenerativeCanvas.vue";
 
 export default {
-  name: 'app',
+  name: "app",
   components: {
     SentimentInput,
+    GenerativeCanvas,
+  },
+  computed: {
+    backgroundColour: function () {
+      return { backgroundColor: this.$store.getters.backgroundRGB };
+    },
   },
 };
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+.wrapper {
+  height: 100vh;
+  width: 100vw;
+  background-color: #111;
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: flex;
+  align-items: center;
   text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  justify-content: center;
+  color: #fff;
 }
 </style>

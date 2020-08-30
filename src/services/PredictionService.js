@@ -9,6 +9,8 @@ export default {
       sentence,
     };
     let res = await axios.post(PREDICTION_URL, body);
+    // let res = { data: { confidence: '0.93', label: 'sadness', input_sentence: sentence } }; // TODO for testing
+    // await new Promise((r) => setTimeout(r, 1000)); // TODO for testing
 
     return res.data;
   },
