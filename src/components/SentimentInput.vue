@@ -54,7 +54,7 @@ export default {
         :show-word-limit="true"
         maxlength="50"
         name="sentiment"
-        :disabled="this.$store.getters.label"
+        :disabled="Boolean(this.$store.getters.label)"
       />
     </el-form-item>
   </el-form>
