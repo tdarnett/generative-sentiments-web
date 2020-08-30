@@ -1,6 +1,7 @@
 export default {
   generate(sketch, _) {
-    sketch.translate(sketch.width / 4, 5);
+    // TODO use
+    sketch.translate(sketch.width / 4, sketch.height / 6);
     sketch.stroke(0, 0, 0, 15);
     randomChord(sketch);
     randomChord(sketch);

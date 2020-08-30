@@ -1,16 +1,16 @@
 <script>
-import PredictionService from "@/services/PredictionService.js";
-import { Loading } from "element-ui";
+import PredictionService from '@/services/PredictionService.js';
+import { Loading } from 'element-ui';
 
 export default {
-  name: "SentimentInput",
+  name: 'SentimentInput',
   props: {
     msg: String,
   },
   data() {
     return {
       form: {
-        sentiment: "",
+        sentiment: '',
       },
     };
   },
@@ -26,7 +26,7 @@ export default {
         let data = await PredictionService.getPrediction(sentence);
         loader.close(); // close the loader
 
-        this.$store.commit("updateResponse", data);
+        this.$store.commit('updateResponse', data);
         console.log(data); // TODO remove
       }
     },
@@ -54,6 +54,7 @@ export default {
         :show-word-limit="true"
         maxlength="50"
         name="sentiment"
+        :disabled="this.$store.getters.label"
       />
     </el-form-item>
   </el-form>
