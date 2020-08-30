@@ -1,5 +1,7 @@
 # Generative Sentiments - Web
 
+https://generative-sentiments.netlify.app/
+
 Built with [Vue.js](https://vuejs.org/), [Vuex](https://vuex.vuejs.org/), and [Vue-P5](https://github.com/Kinrany/vue-p5), this web app allows you to view/interact/create artwork that matches your emotional state.
 
 ## Project setup
