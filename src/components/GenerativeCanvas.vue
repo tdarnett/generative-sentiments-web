@@ -1,6 +1,6 @@
 <script>
 import VueP5 from 'vue-p5';
-import { LABEL_ARTWORK_WRITER_MAP } from '../artwork/utils.js';
+import { LABEL_ARTWORK_WRITER_MAP } from '../artwork/constants.js';
 import utils from '../utils';
 
 export default {
@@ -12,7 +12,7 @@ export default {
     return {
       width: 800,
       height: 600,
-      t: 0,
+      timestep: 0,
     };
   },
   methods: {
@@ -24,13 +24,13 @@ export default {
       console.log('in draw function!');
       if (this.$store.getters.label) {
         let labelArtwork = LABEL_ARTWORK_WRITER_MAP[this.$store.getters.label];
-        labelArtwork.generate(sketch, this.t);
+        labelArtwork.generate(sketch, this.timestep);
         // this.t += 0.15;
       }
     },
     keypressed(sketch) {
       const key = String.fromCharCode(sketch.keyCode);
-      if (key == 's' || key == 'S') sketch.saveCanvas(utils.timestamp(), 'png');
+      if (key == 's' || key == 'S') sketch.saveCanvas(utils.timestamp(), 'png'); // TODO put tooltip legend explaining shortcuts
     },
   },
 };
