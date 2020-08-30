@@ -13,7 +13,7 @@ let counter = 0;
 export default {
   setup(sk) {
     let bg = LABEL_ARTWORK_WRITER_MAP['joy'].background;
-    sk.background(bg.r, bg.g, bg.b);
+    sk.background(bg);
     sk.cursor(sk.CROSS);
 
     x = sk.mouseX;

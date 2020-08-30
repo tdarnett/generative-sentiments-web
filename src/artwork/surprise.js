@@ -9,7 +9,7 @@ const surpriseCoefficient = 1.05;
 export default {
   setup(sk) {
     let bg = LABEL_ARTWORK_WRITER_MAP['surprise'].background;
-    sk.background(bg.r, bg.g, bg.b);
+    sk.background(bg);
     return sk;
   },
   draw(sk, response) {

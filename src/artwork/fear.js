@@ -8,7 +8,7 @@ export default {
     sk.noStroke();
     let bg = LABEL_ARTWORK_WRITER_MAP['fear'].background;
     sk.fill(53, 164, 80);
-    sk.background(bg.r, bg.g, bg.b);
+    sk.background(bg);
     return sk;
   },
   draw(sk, _response) {

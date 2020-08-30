@@ -8,50 +8,26 @@ import joy from './joy.js';
 export const LABEL_ARTWORK_WRITER_MAP = {
   anger: {
     object: anger,
-    background: {
-      r: 227,
-      g: 49,
-      b: 85,
-    },
+    background: "rgb(227,49,85)"
   },
   sadness: {
     object: sadness,
-    background: {
-      r: 31,
-      g: 108,
-      b: 173,
-    },
+    background: "rgb(31,108,173)"
   },
   fear: {
     object: fear,
-    background: {
-      r: 0,
-      g: 0,
-      b: 0,
-    },
+    background: "rgb(0,0,0)"
   },
   love: {
     object: love,
-    background: {
-      r: 236,
-      g: 104,
-      b: 215,
-    },
+    background: "rgb(236,104,215)"
   },
   surprise: {
     object: surprise,
-    background: {
-      r: 63,
-      g: 165,
-      b: 192,
-    },
+    background: "rgb(63,165,192)"
   },
   joy: {
     object: joy,
-    background: {
-      r: 250,
-      g: 219,
-      b: 77,
-    },
+    background: "rgb(250,219,77)"
   },
 };

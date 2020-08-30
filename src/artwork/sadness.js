@@ -23,7 +23,7 @@ export default {
     sk.strokeWeight(0.75);
 
     let bg = LABEL_ARTWORK_WRITER_MAP['sadness'].background;
-    sk.background(bg.r, bg.g, bg.b);
+    sk.background(bg);
 
     return sk;
   },

@@ -13,7 +13,6 @@ export default {
     setup(sketch) {
       // defaults for all artwork
       sketch.createCanvas(sketch.windowWidth * 0.7, sketch.windowHeight * 0.8);
-      sketch.background("white");
 
       // emotion specific setup
       if (this.$store.getters.label) {
@@ -40,7 +39,7 @@ export default {
       if (keyCode == sketch.DELETE || keyCode == sketch.BACKSPACE) {
         // must match the default background colours for each emotion
         let bg = LABEL_ARTWORK_WRITER_MAP[this.$store.getters.label].background;
-        sketch.background(bg.r, bg.g, bg.b);
+        sketch.background(bg);
       }
     },
     mousepressed(sketch) {

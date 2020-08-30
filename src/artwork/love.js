@@ -1,3 +1,5 @@
+// adapted from https://p5js.org/examples/interaction-kaleidoscope.html
+
 import { LABEL_ARTWORK_WRITER_MAP } from './constants.js';
 
 let symmetry = 6;
@@ -7,7 +9,7 @@ let brushSize = 4;
 export default {
   setup(sk) {
     let bg = LABEL_ARTWORK_WRITER_MAP['love'].background;
-    sk.background(bg.r, bg.g, bg.b);
+    sk.background(bg);
     sk.angleMode(sk.DEGREES);
     return sk;
   },
@@ -24,11 +26,13 @@ export default {
       let pmx = sk.pmouseX - sk.width / 2;
       let pmy = sk.pmouseY - sk.height / 2;
 
+      const color = sk.color(250, 197, 255); // drawing color
+
       if (sk.mouseIsPressed) {
         for (let i = 0; i < symmetry; i++) {
           sk.rotate(angle);
           sk.strokeWeight(brushSize);
-          sk.stroke(256); // white
+          sk.stroke(color);
           sk.line(mx, my, pmx, pmy);
           sk.push();
           sk.scale(1, -1);

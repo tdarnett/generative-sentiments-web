@@ -21,17 +21,14 @@ const store = new Vuex.Store({
     sentence: (state) => {
       return state.response && state.response.sentence;
     },
-    backgroundColor: (state) => {
+    backgroundRGB: (state) => {
       let rgbValues = 'rgb(28,166,121)'; // default background
 
       if (state.response.label) {
-        let bg = LABEL_ARTWORK_WRITER_MAP[state.response.label].background;
-        rgbValues = `rgb(${bg.r},${bg.g},${bg.b})`;
+        rgbValues = LABEL_ARTWORK_WRITER_MAP[state.response.label].background;
       }
 
-      return {
-        backgroundColor: rgbValues,
-      };
+      return rgbValues;
     },
   },
 });

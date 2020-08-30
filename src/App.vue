@@ -24,7 +24,7 @@ export default {
   },
   computed: {
     backgroundColour: function () {
-      return this.$store.getters.backgroundColor;
+      return { backgroundColor: this.$store.getters.backgroundRGB };
     },
   },
 };

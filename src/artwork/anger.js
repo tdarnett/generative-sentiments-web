@@ -2,7 +2,7 @@ import { LABEL_ARTWORK_WRITER_MAP } from './constants.js';
 export default {
   setup(sk) {
     let bg = LABEL_ARTWORK_WRITER_MAP['anger'].background;
-    sk.background(bg.r, bg.g, bg.b);
+    sk.background(bg);
     return sk;
   },
   draw(sk, _response) {
