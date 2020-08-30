@@ -1,12 +1,12 @@
 <script>
-import VueP5 from 'vue-p5';
-import { LABEL_ARTWORK_WRITER_MAP } from '../artwork/constants.js';
-import utils from '../utils';
+import VueP5 from "vue-p5";
+import { LABEL_ARTWORK_WRITER_MAP } from "../artwork/constants.js";
+import utils from "../utils";
 
 export default {
-  name: 'GenerativeCanvas',
+  name: "GenerativeCanvas",
   components: {
-    'vue-p5': VueP5,
+    "vue-p5": VueP5,
   },
   data() {
     return {
@@ -17,20 +17,37 @@ export default {
   },
   methods: {
     setup(sketch) {
+      // defaults for all artwork
       sketch.resizeCanvas(this.width, this.height);
-      sketch.background('white');
-    },
-    draw(sketch) {
-      console.log('in draw function!');
+      sketch.background("white");
+
+      // emotion specific setup
       if (this.$store.getters.label) {
         let labelArtwork = LABEL_ARTWORK_WRITER_MAP[this.$store.getters.label];
-        labelArtwork.generate(sketch, this.timestep);
-        // this.t += 0.15;
+        sketch = labelArtwork.setup(sketch, this.width, this.height);
+      }
+    },
+    draw(sketch) {
+      console.log("in outside draw function!");
+      if (this.$store.getters.label) {
+        let labelArtwork = LABEL_ARTWORK_WRITER_MAP[this.$store.getters.label];
+        labelArtwork.draw(sketch, this.timestep);
+        // this.timestep += 0.15;
       }
     },
     keypressed(sketch) {
-      const key = String.fromCharCode(sketch.keyCode);
-      if (key == 's' || key == 'S') sketch.saveCanvas(utils.timestamp(), 'png'); // TODO put tooltip legend explaining shortcuts
+      const keyCode = sketch.keyCode;
+      const key = String.fromCharCode(keyCode);
+
+      // save image
+      if (key == "s" || key == "S") {
+        sketch.saveCanvas(utils.timestamp(), "png"); // TODO put tooltip legend explaining shortcuts
+      }
+
+      // clear background
+      if (keyCode == sketch.DELETE || keyCode == sketch.BACKSPACE) {
+        sketch.background(255);
+      }
     },
   },
 };

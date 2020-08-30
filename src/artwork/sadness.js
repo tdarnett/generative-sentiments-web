@@ -1,27 +1,58 @@
+// Adapted from https://github.com/generative-design/Code-Package-p5.js/blob/master/01_P/P_2_2_3_01/sketch.js
+
+let formResolution = 15;
+let stepSize = 2;
+let initRadius = 125;
+let centerX;
+let centerY;
+let x = [];
+let y = [];
+
 export default {
-  generate(sketch, _) {
-    // TODO use
-    sketch.translate(sketch.width / 4, sketch.height / 6);
-    sketch.stroke(0, 0, 0, 15);
-    randomChord(sketch);
-    randomChord(sketch);
-    return sketch;
+  setup(sk, height, width) {
+    centerX = width / 2;
+    centerY = height / 2;
+    let angle = sk.radians(360 / formResolution);
+    for (let i = 0; i < formResolution; i++) {
+      x.push(sk.cos(angle * i) * initRadius);
+      y.push(sk.sin(angle * i) * initRadius);
+    }
+
+    sk.stroke(0, 50);
+    sk.strokeWeight(0.75);
+    sk.background(31, 108, 173);
+    return sk;
+  },
+  draw(sk, _) {
+    // floating towards mouse position
+    centerX += (sk.mouseX - centerX) * 0.01;
+    centerY += (sk.mouseY - centerY) * 0.01;
+
+    // calculate new points
+    for (var i = 0; i < formResolution; i++) {
+      x[i] += sk.random(-stepSize, stepSize);
+      y[i] += sk.random(-stepSize, stepSize);
+    }
+
+    sk.noFill();
+
+    sk.beginShape();
+    // first controlpoint
+    sk.curveVertex(
+      x[formResolution - 1] + centerX,
+      y[formResolution - 1] + centerY
+    );
+
+    // only these points are drawn
+    for (let i = 0; i < formResolution; i++) {
+      sk.curveVertex(x[i] + centerX, y[i] + centerY);
+    }
+    sk.curveVertex(x[0] + centerX, y[0] + centerY);
+
+    // end controlpoint
+    sk.curveVertex(x[1] + centerX, y[1] + centerY);
+    sk.endShape();
+
+    return sk;
   },
 };
-
-function randomChord(sketch) {
-  // from https://p5js.org/examples/math-random-chords.html
-
-  // find a random point on a circle
-  let angle1 = sketch.random(0, 2 * sketch.PI);
-  let xpos1 = 200 + 200 * sketch.cos(angle1);
-  let ypos1 = 200 + 200 * sketch.sin(angle1);
-
-  // find another random point on the circle
-  let angle2 = sketch.random(0, 2 * sketch.PI);
-  let xpos2 = 200 + 200 * sketch.cos(angle2);
-  let ypos2 = 200 + 200 * sketch.sin(angle2);
-
-  // draw a line between them
-  sketch.line(xpos1, ypos1, xpos2, ypos2);
-}
