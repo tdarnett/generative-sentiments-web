@@ -26,7 +26,7 @@ export default {
   },
   draw(sk, response) {
     if (sk.mouseIsPressed && sk.mouseButton == sk.LEFT) {
-      let letters = response.sentence;
+      let letters = response.input_sentence;
 
       let d = sk.dist(x, y, sk.mouseX, sk.mouseY);
       sk.textSize(fontSizeMin + d / 2);

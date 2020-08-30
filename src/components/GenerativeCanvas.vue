@@ -18,13 +18,13 @@ export default {
       // emotion specific setup
       if (this.$store.getters.label) {
         let labelArtwork = LABEL_ARTWORK_WRITER_MAP[this.$store.getters.label];
-        sketch = labelArtwork.setup(sketch, this.width, this.height);
+        sketch = labelArtwork.object.setup(sketch, this.width, this.height);
       }
     },
     draw(sketch) {
       if (this.$store.getters.label) {
         let labelArtwork = LABEL_ARTWORK_WRITER_MAP[this.$store.getters.label];
-        labelArtwork.draw(sketch, this.$store.state.response);
+        labelArtwork.object.draw(sketch, this.$store.state.response);
       }
     },
     keypressed(sketch) {
@@ -38,13 +38,15 @@ export default {
 
       // clear background
       if (keyCode == sketch.DELETE || keyCode == sketch.BACKSPACE) {
-        sketch.background(255); // TODO use the label background constant
+        // must match the default background colours for each emotion
+        let bg = LABEL_ARTWORK_WRITER_MAP[this.$store.getters.label].background;
+        sketch.background(bg.r, bg.g, bg.b);
       }
     },
     mousepressed(sketch) {
       if (this.$store.getters.label) {
         let labelArtwork = LABEL_ARTWORK_WRITER_MAP[this.$store.getters.label];
-        labelArtwork.mousepressed(sketch);
+        labelArtwork.object.mousepressed(sketch);
       }
     },
   },
