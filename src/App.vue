@@ -24,7 +24,11 @@ export default {
   },
   computed: {
     backgroundColour: function () {
-      return { backgroundColor: this.$store.getters.backgroundRGB };
+      // add a touch of transparency to distinguish the background from canvas
+      const transparency = '0.90';
+      const rgbValues = this.$store.getters.backgroundRGB;
+      const rgbArray = rgbValues.replace(/[^\d,]/g, '').split(',')
+      return { backgroundColor: `rgba(${rgbArray.join(",")},${transparency})`};
     },
   },
 };

@@ -23,6 +23,7 @@ const store = new Vuex.Store({
     },
     backgroundRGB: (state) => {
       let rgbValues = 'rgb(28,166,121)'; // default background
+      // let rgbValues = { r: 28, b: 166, g: 121 }; // default background
 
       if (state.response.label) {
         rgbValues = LABEL_ARTWORK_WRITER_MAP[state.response.label].background;
