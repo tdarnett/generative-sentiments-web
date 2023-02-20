@@ -21,6 +21,9 @@ const store = new Vuex.Store({
     sentence: (state) => {
       return state.response && state.response.sentence;
     },
+    confidence: (state) => {
+      return state.response && state.response.confidence;
+    },
     backgroundRGB: (state) => {
       let rgbValues = 'rgb(28,166,121)'; // default background
 
