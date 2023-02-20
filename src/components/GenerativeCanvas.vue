@@ -31,15 +31,24 @@ export default {
       const key = String.fromCharCode(keyCode);
 
       // save image
-      if (key == 's' || key == 'S') {
-        sketch.saveCanvas(utils.timestamp(), 'png'); // TODO put tooltip legend explaining shortcuts
+      if (key == 'S') {
+        sketch.saveCanvas(utils.timestamp(), 'png');
       }
 
       // clear background
-      if (keyCode == sketch.DELETE || keyCode == sketch.BACKSPACE || key == 'c' || key == 'C') {
+      if (
+        keyCode == sketch.DELETE ||
+        keyCode == sketch.BACKSPACE ||
+        key == 'C'
+      ) {
         // must match the default background colours for each emotion
         let bg = LABEL_ARTWORK_WRITER_MAP[this.$store.getters.label].background;
         sketch.background(bg);
+      }
+
+      // restart
+      if (key == 'R') {
+        this.$store.commit('clearState');
       }
     },
     mousepressed(sketch) {
@@ -56,7 +65,7 @@ export default {
   <div>
     <vue-p5 v-on="{ setup, mousepressed, keypressed, draw }"></vue-p5>
     <div class="legend">
-      <p>(s)ave (c)lear</p>
+      <p>(s)ave · (c)lear · (r)estart</p>
       <p class="metadata">
         ({{ this.$store.getters.confidence }}) ({{ this.$store.getters.label }})
       </p>

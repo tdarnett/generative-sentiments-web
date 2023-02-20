@@ -13,6 +13,7 @@ const store = new Vuex.Store({
   },
   mutations: {
     updateResponse: (state, response) => (state.response = response),
+    clearState: (state) => (Object.assign(state, {response: {}}))
   },
   getters: {
     label: (state) => {
