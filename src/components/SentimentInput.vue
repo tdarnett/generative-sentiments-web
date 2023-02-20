@@ -18,16 +18,14 @@ export default {
     async getPredictionData(event) {
       let sentence = event.target.elements.sentiment.value; // grab sentence from input
       if (sentence) {
-        console.log(sentence); // TODO removce
         // initialize loader singleton
         let loader = Loading.service({
           background: true,
         });
         let data = await PredictionService.getPrediction(sentence);
-        loader.close(); // close the loader
+        loader.close();
 
         this.$store.commit('updateResponse', data);
-        console.log(data); // TODO remove
       }
     },
   },
@@ -37,8 +35,7 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .sentiment-input {
-  width: 80%;
-  max-width: 700px;
+  width: 80vh;
   font-size: 18pt;
 }
 </style>
