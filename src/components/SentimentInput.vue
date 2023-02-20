@@ -35,7 +35,7 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .sentiment-input {
-  width: 80vh;
+  width: 50vh;
   font-size: 18pt;
 }
 </style>

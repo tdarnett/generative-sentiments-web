@@ -1,15 +1,9 @@
 <template>
   <div id="app" :style="backgroundColour">
     <div class="wrapper">
-      <div v-if="isMobile">
-        <p>Please visit on a desktop</p>
-      </div>
-      <div v-else>
-        <SentimentInput msg="Describe how you feel in one sentence..." />
-        <div v-if="this.$store.getters.label">
-          <GenerativeCanvas />
-        </div>
-      </div>
+      <Blob v-if="!this.$store.getters.label" />
+      <SentimentInput msg="How are you feeling?" />
+      <GenerativeCanvas v-if="this.$store.getters.label" />
     </div>
   </div>
 </template>
@@ -17,12 +11,14 @@
 <script>
 import SentimentInput from './components/SentimentInput.vue';
 import GenerativeCanvas from './components/GenerativeCanvas.vue';
+import Blob from './components/Blob.vue';
 
 export default {
   name: 'app',
   components: {
     SentimentInput,
     GenerativeCanvas,
+    Blob,
   },
   computed: {
     backgroundColour: function() {
@@ -32,9 +28,6 @@ export default {
       const rgbArray = rgbValues.replace(/[^\d,]/g, '').split(',');
       return { backgroundColor: `rgba(${rgbArray.join(',')},${transparency})` };
     },
-  },
-  isMobile: function() {
-    return /Mobi/.test(navigator.userAgent);
   },
 };
 </script>
